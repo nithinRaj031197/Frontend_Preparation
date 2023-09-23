@@ -177,3 +177,129 @@ class Nithin extends Parent {
 const nithin = new Nithin();
 console.log(nithin.getMyProperty());
 ```
+
+## Polymorphism
+
+- Its a object-oriented paradignm, that provides **_single action in different forms_** .
+
+```js
+class Shape {
+  area() {
+    return 0;
+  }
+  perimeter() {
+    return 0;
+  }
+  toString() {
+    return Object.getPrototypeOf(this).constructor.name;
+  }
+}
+
+class Circle extends Shape {
+  constructor(r) {
+    super();
+    this.radius = r;
+  }
+
+  area() {
+    return Math.PI * this.radius ** 2;
+  }
+
+  perimeter() {
+    return Math.PI * this.radius * 2;
+  }
+}
+
+class Rectangle extends Shape {
+  constructor(w, h) {
+    super();
+    this.width = w;
+    this.height = h;
+  }
+
+  area() {
+    return this.width * this.height;
+  }
+  perimeter() {
+    return 2 * (this.width + this.height);
+  }
+}
+
+function cumulateShapes(shapes) {
+  return shapes.reduce((sum, shape) => {
+    if (shape instanceof Shape) {
+      console.log(`Shape: ${shape.toString()} - area: ${shape.area()}`);
+      console.log(`Shape: ${shape.toString()} - perimeter: ${shape.perimeter()}`);
+      return sum + shape.area();
+    }
+    throw Error("Bad argument shape.");
+  }, 0);
+}
+
+const shapes = [new Circle(3), new Rectangle(2, 3)];
+
+console.log(cumulateShapes(shapes));
+```
+
+## Encapsulation
+
+- Process of binding the properties and method that operate on data into a single unit called class.
+
+```js
+class BankAccount {
+  constructor(balance) {
+    this._balance = balance; // Encapsulated property
+  }
+
+  // Encapsulated method
+  deposit(amount) {
+    if (amount > 0) {
+      this._balance += amount;
+      console.log(`Deposited ${amount}. New balance: ${this._balance}`);
+    }
+  }
+
+  // Encapsulated method
+  withdraw(amount) {
+    if (amount > 0 && amount <= this._balance) {
+      this._balance -= amount;
+      console.log(`Withdrawn ${amount}. New balance: ${this._balance}`);
+    }
+  }
+}
+
+const account = new BankAccount(1000);
+account.deposit(200);
+account.withdraw(300);
+```
+
+## Inheritance:
+
+- Inheritance is a mechanism that allows a new class (subclass or derived class) to inherit properties and methods from an existing class.
+
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a sound`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+
+  bark() {
+    console.log(`${this.name} (a ${this.breed} dog) barks`);
+  }
+}
+
+const myDog = new Dog("Buddy", "Golden Retriever");
+myDog.speak(); // Inherited from Animal
+myDog.bark(); // Specific to Dog
+```
