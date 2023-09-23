@@ -19,12 +19,12 @@ const human = new Animal("Rekha");
 console.log(human.getName());
 ```
 
-- <mark>function</mark> keyword must not be used in class.
+- **_function_** keyword must not be used in class.
 
 ### Public variables:
 
-- It must be accessed with <mark>this</mark> keyword within the class.
-- similarly methods are also accessed with help of <mark>this</mark> keyword.
+- It must be accessed with **_this_** keyword within the class.
+- similarly methods are also accessed with help of **_this_** keyword.
 
 ```js
 class Circle {
@@ -50,7 +50,7 @@ console.log(cr1.getArea());
 ### Extend classes
 
 - Used to create new classes that inherit properties and methods from existing classes.
-- While extending <mark>parent class name</mark> also call <mark>super() within the child class</mark>.
+- While extending **_parent class name_** also call **_super() within the child class_**.
 - Here are some reasons why you might want to extend a class in JavaScript:
   1. Code Reusability
   2. Inheritance
@@ -96,7 +96,7 @@ console.log(fish.getSurvivalType());
 
 - To create static memebers, it should be done within the class.
 - Static Members are associated and accessed with help of class, not with instance of class(i.e.., object).
-- Static members are defined using the <mark>static</mark> keyword.
+- Static members are defined using the **_static_** keyword.
 
 1. Static Variables
 
@@ -145,10 +145,10 @@ console.log(result2); // Output: 6
 
 ## Private Members:
 
-- It can be created within the class by prefixing variables and methods with '<mark>#</mark>'.
+- It can be created within the class by prefixing variables and methods with '**_#_**'.
 - It can be accessed only within that class.
-- If u need to expose then a seperate <mark>public method or variable</mark> must be provided.
-- We cant access <mark>static private members</mark> outside the class or cant even access by extending class.
+- If u need to expose then a seperate **_public method or variable_** must be provided.
+- We cant access **_static private members_** outside the class or cant even access by extending class.
 
 ```js
 class Parent {
