@@ -1,8 +1,20 @@
 # Classes:
 
+## Class:
+
+- Blueprint for creating an object.
+
+## Object:
+
+- Instance of a class.
+
 ## [Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor):
 
-Its a method to creating and initializing an object instance of that class.
+- Its a method to creating and initializing an object instance of that class.
+
+(or)
+
+- To create a new instance of an object.
 
 ```js
 class Animal {
@@ -243,7 +255,7 @@ console.log(cumulateShapes(shapes));
 
 ## Encapsulation
 
-- Process of binding the properties and method that operate on data into a single unit called class.
+- The process of hiding the implementation details and providing an interface for accessing data and methods.
 
 ```js
 class BankAccount {
@@ -277,6 +289,10 @@ account.withdraw(300);
 
 - Inheritance is a mechanism that allows a new class (subclass or derived class) to inherit properties and methods from an existing class.
 
+(or)
+
+- The process of inheriting properties and methods from a parent object.
+
 ```js
 class Animal {
   constructor(name) {
@@ -303,3 +319,7 @@ const myDog = new Dog("Buddy", "Golden Retriever");
 myDog.speak(); // Inherited from Animal
 myDog.bark(); // Specific to Dog
 ```
+
+## **_instanceof_** operator:
+
+- To check if an object belongs to a specific class.

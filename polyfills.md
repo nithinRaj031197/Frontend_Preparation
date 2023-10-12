@@ -225,3 +225,45 @@ Function.prototype.myBind = function (obj = {}, ...args) {
   };
 };
 ```
+
+7. ## Flat:
+
+```js
+if (!Array.prototype.customFlat) {
+  Array.prototype.customFlat = function (depth) {
+    if (depth === undefined) {
+      depth = 1;
+    }
+    if (depth < 1) {
+      return this.slice();
+    }
+    return this.reduce(function (flat, toFlatten) {
+      return flat.concat(Array.isArray(toFlatten) && depth > 1 ? toFlatten.customFlat(depth - 1) : toFlatten);
+    }, []);
+  };
+}
+
+// Example usage:
+const multiDimensionalArray = [1, [2, [3, [4, 5]]]];
+const flattenedArray = multiDimensionalArray.customFlat(2);
+console.log(flattenedArray); // [1, 2, 3, [4, 5]]
+```
+
+```js
+var flat = function (arr, n) {
+  let result = [];
+
+  function flatten(arr, depth) {
+    for (let i = 0; i < arr.length; i++) {
+      if (depth < n && Array.isArray(arr[i])) {
+        flatten(arr[i], depth + 1);
+      } else {
+        result.push(arr[i]);
+      }
+    }
+  }
+
+  flatten(arr, 0);
+  return result;
+};
+```
