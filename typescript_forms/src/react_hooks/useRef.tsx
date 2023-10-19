@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 // Creating a Ref for a DOM Element:
 const InputFocus = () => {
@@ -20,22 +20,3 @@ const InputFocus = () => {
 };
 
 export default InputFocus;
-
-// Storing Values Without Causing Re-Renders:
-
-const Timer = () => {
-  const count = useRef(0);
-
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      count.current += 1;
-      console.log(`Count: ${count.current}`);
-    }, 1000);
-
-    return () => {
-      clearInterval(timerId);
-    };
-  }, []);
-
-  return <div>Count: {count.current}</div>;
-};

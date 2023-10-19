@@ -1,43 +1,38 @@
 function calc() {
-  let result = 0;
+  let res = 0;
 
-  const calculator = {
-    add(a) {
-      result += a;
-
+  return {
+    add(addVal) {
+      res += addVal;
+      // console.log("this", this);
       return this;
     },
-    subtract(sub) {
-      result -= sub;
-
+    subtrac(subVal) {
+      res -= subVal;
       return this;
     },
-    multiply(m) {
-      result *= m;
-
+    multiply(multiplyVal) {
+      res *= multiplyVal;
       return this;
     },
-    divide(d) {
-      result /= d;
-
+    divide(divideVal) {
+      res /= divideVal;
       return this;
     },
     getResult() {
-      return result;
+      return res;
     },
   };
-  console.log(calculator);
-  return calculator;
 }
 
-calc().add(4);
-const res = calc().add(10).subtract(5).multiply(20).divide(2).getResult();
+console.log(calc().add(10).divide(2).getResult());
 
-/**
- 
-    react hooks
-    dsa
-    Js
-    
+// const user = {
+//   name: "Nithgin",
+//   age: 34,
+//   getName() {
+//     return this.name;
+//   },
+// };
 
- */
+// console.log(user.getName());
