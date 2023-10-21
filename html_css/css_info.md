@@ -4,6 +4,9 @@
 - [CSS Architecture BEM](#css-architecture-bem)
 - [Image Sprites](#image-sprites)
 - [Browser Caching](#browser-caching)
+- [Pseudo Classes](#pseudo-classes)
+- [Pseudo Elements](#pseudo-elements)
+- [CSS Display Properties](#css-display-properties)
 
 # Resetting and normalizing in CSS:
 
@@ -470,3 +473,221 @@
   - **Cache Purging**:
 
     Caches may be automatically cleared or purged by the browser if they become too large or if the user manually clears their cache.
+
+# Pseudo Classes:
+
+- Pseudo-classes in CSS are used to define the **_special state of an HTML element that cannot be targeted using regular selectors_**
+
+- They allow you to style elements based on user interaction, document structure, or other dynamic conditions.
+- Pseudo-classes are denoted by a colon (:) followed by their name
+
+1. ## **:hover**
+
+- The :hover pseudo-class targets an element when a user hovers their mouse over it. It is commonly used to change the appearance of links, buttons, or other interactive elements when they are in the hover state.
+
+- Example:
+
+  ```css
+  a:hover {
+    color: red;
+  }
+  ```
+
+2. ## **:active**
+
+- The :active pseudo-class targets an element when it is being activated or clicked by the user. It is often used to create visual feedback for buttons when they are clicked.
+
+- Example:
+
+  ```css
+  button:active {
+    background-color: green;
+  }
+  ```
+
+3. ## **:focus**
+
+- The :focus pseudo-class targets an element when it gains focus. This is commonly used for form input fields, making it clear which field the user is currently interacting with.
+
+- Example:
+
+  ```css
+  input:focus {
+    border: 2px solid blue;
+  }
+  ```
+
+4. ## **:first-child**
+
+- The :first-child pseudo-class targets the first child element of its parent. It is used to apply styles to the first child element within a container.
+
+- Example:
+
+  ```css
+  li:first-child {
+    font-weight: bold;
+  }
+  ```
+
+5. ## **:last-child**
+
+- The :last-child pseudo-class targets the last child element of its parent. It is used to style the last child element within a container.
+
+- Example:
+  ```css
+  p:last-child {
+    margin-bottom: 0;
+  }
+  ```
+
+6. ## **:nth-child(n)**
+
+- The :nth-child(n) pseudo-class allows you to select elements based on their position within their parent container. You can specify the exact position or use formulas.
+
+- Example:
+
+  ```css
+  li:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  ```
+
+7. ## **:not(selector)**
+
+- The :not(selector) pseudo-class excludes elements that match the specified selector. It is useful for selecting elements that don't meet certain criteria.
+
+- Example:
+  ```css
+  input:not([type="text"]) {
+    display: none;
+  }
+  ```
+
+8. ## **:nth-of-type(n)**
+
+- Similar to :nth-child, the :nth-of-type(n) pseudo-class selects elements based on their position within their parent, but only considering elements of the same type.
+
+- Example:
+
+  ```css
+  div:nth-of-type(2n) {
+    background-color: #ececec;
+  }
+  ```
+
+8. ## **:enabled and :disabled**
+
+- These pseudo-classes target form elements (like input fields, buttons, etc.) that are either enabled or disabled. They are used to style elements based on their user-interaction state.
+
+- Example:
+
+  ```css
+  input:enabled {
+    background-color: #fff;
+  }
+
+  input:disabled {
+    background-color: #ccc;
+  }
+  ```
+
+# Pseudo Elements
+
+- Pseudo-elements are **_a powerful way to create additional content, style specific parts of elements, and enhance the visual presentation of a web page without altering the actual HTML structure_**.
+
+- They are denoted by a double colon (::) followed by the name of the pseudo-element.
+
+1. ## ::before and ::after
+
+- ::before and ::after pseudo-elements are used to insert content before and after the content of an element, respectively.
+- They are often used for decorative elements, icons, or to create custom content.
+
+  ```css
+  p::before {
+    content: "Start: ";
+    font-weight: bold;
+  }
+
+  p::after {
+    content: " :End";
+    font-weight: bold;
+  }
+  ```
+
+2. ## ::first-line and ::first-letter
+
+- ::first-line selects and styles the first line of text within an element, such as a paragraph.
+- ::first-letter selects and styles the first letter or character of a block-level element.
+
+  ```css
+  p::first-line {
+    font-weight: bold;
+  }
+
+  p::first-letter {
+    font-size: 150%;
+  }
+  ```
+
+3. ## ::selection
+
+- The ::selection pseudo-element is used to style the selected text when a user highlights content on the page.
+- You can apply styles to the background color, text color, and other properties of the selected text.
+
+  ```css
+  ::selection {
+    background-color: #ffcc00;
+    color: #333;
+  }
+  ```
+
+4. ## ::placeholder
+
+- The ::placeholder pseudo-element is used to style the placeholder text in input fields and text areas.
+- It's commonly used to change the color or font properties of the placeholder text.
+
+  ```css
+  input::placeholder {
+    color: #999;
+    font-style: italic;
+  }
+  ```
+
+5. ## **::marker**
+
+- The ::marker pseudo-element is used to style the list marker (e.g., bullet or number) of list items.
+
+- It allows you to apply styles to list markers without affecting the content of list items.
+
+  ```css
+  li::marker {
+    color: red;
+  }
+  ```
+
+# CSS Display Properties
+
+- In CSS, the display property is used to control how an HTML element is displayed in the browser.
+- It specifies the rendering behavior of an element, affecting its layout and visibility.
+
+  1. **display: block;**: Elements start on a new line, expand to full width.
+
+  2. **display: inline;**: Elements don't start a new line, take minimal width.
+
+  3. **display: inline-block;**: Combines block and inline behavior.
+
+  4. **display: none;**: Element is hidden, doesn't occupy space.
+
+  5. **display: flex;**: Enables flexible box layout for alignment.
+
+  6. **display: grid;**: Creates a grid for precise layout control.
+
+  7. **display: table;**, table-row;, table-cell;: Mimic table behavior.
+
+  8. **display: list-item;**: Styles elements like list items.
+
+  9. **display: inline-flex;**, inline-grid;: Inline versions of flex/grid.
+
+  10. **display: initial;**: Resets display property to default.
+
+  11. **display: inherit;**: Inherits display property from parent.
