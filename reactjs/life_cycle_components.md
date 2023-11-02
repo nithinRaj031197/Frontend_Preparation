@@ -1,54 +1,34 @@
-## **<span style="color: rgb(77, 161, 230);">Explain the lifecycle methods in a class component. List them in order.</span>**
+## Lifecycle Methods in Class Components
 
-- There are four different phases in the lifecycle of React class component:
+There are four different phases in the lifecycle of a React class component:
 
-  1. **<span style="color: rgb(77, 161, 230);">Initialization Phase:</span>**
+### 1. Initialization Phase
 
-  - React component will prepare by **setting up the default props and initial state**.
+- React component prepares by setting up the default props and initial state.
+- **`constructor()`**: The constructor method is called before the component is mounted. You can use it to initialize state and bind event handlers.
 
-  - **<span style="color: yellow">constructor()</span>**: This is the component's constructor method, called before the component is mounted. You can use it for initializing state and binding event handlers.
+### 2. Mounting Phase
 
-  2. **<span style="color: rgb(77, 161, 230);">Mounting Phase:</span>**
+- Mounting refers to putting the elements into the browser DOM. React uses Virtual DOM, so the entire browser DOM is not refreshed.
+- This phase occurs when an instance of a component is created and inserted into the DOM.
+- Key methods in the Mounting phase:
 
-  - Mounting refers to putting the elements into the browser DOM. Since React uses VirtualDOM, the entire browser DOM which has been currently rendered would not be refreshed.
+  - **`render()`**: This method outputs or re-renders the HTML to the DOM with new changes. It's an essential method and is always called.
+  - **`componentDidMount()`**: This method is called after the component is rendered. You can use it for tasks like data fetching, initializing third-party libraries, or setting up timers.
 
-  - Hence phase occurs **when an instance of a component is being created and inserted into the DOM**.
-    The key methods in the Mounting phase are:
+### 3. Updating Phase
 
-    - **<span style="color: yellow">render():</span>**
+- This phase is triggered when the component's state or props change.
+- Key methods in the Updating phase:
 
-    - This method will **output or re-render the HTML to the DOM with new changes**.
-    - The render() method is an essential method and will be called always while the remaining methods are optional.
+  - **`shouldComponentUpdate(nextProps, nextState)`**: You can control whether the component should update by returning true or false. This is useful for optimizing performance.
+  - **`render()`**: This method is called to update the component's UI.
+  - **`componentDidUpdate(prevProps, prevState)`**: It's invoked after the component has updated and is often used for additional data fetches or DOM interactions.
+  - **`getSnapshotBeforeUpdate()`**: This method provides access to the props and state before the update.
 
-    - **<span style="color: yellow">componentDidMount():</span>**
+### 4. Unmounting Phase
 
-    - This method will be called after the rendering of the component. Using this method, you can run statements that need the component to be already kept in the DOM.
+- This phase occurs when the component is removed from the DOM.
+- Key methods in the Unmounting phase:
 
-    - It's often used to perform tasks like **data fetching, initializing third-party libraries, or setting up timers.**
-
-  3.  **<span style="color: rgb(77, 161, 230);">Updating Phase:</span>**
-
-  - This phase is triggered when the component's state or props change.
-  - The key methods in the Updating phase are:
-
-    - **<span style="color: yellow">shouldComponentUpdate(nextProps, nextState):</span>**
-    - This method allows you to control whether the component should update or not by returning true or false. It is useful for optimizing performance.
-
-    - **<span style="color: yellow">render():</span>**
-    - The render method is called again to update the component's UI.
-
-    - **<span style="color: yellow">componentDidUpdate(prevProps, prevState):</span>**
-    - This method is invoked after the component has updated. It's often used for making additional data fetches or interacting with the DOM following an update.
-
-    - **<span style="color: yellow">getSnapshotBeforeUpdate():</span>**
-    - This method will provide access for the props as well as for the state before the update.
-    - It is possible to check the previously present value before the update, even after the update
-
-  4.  **<span style="color: rgb(77, 161, 230);">Unmounting Phase:</span>**
-
-  - This phase occurs when the component is removed from the DOM.
-  - The key methods in the Unmounting phase are:
-
-    - **<span style="color: yellow">componentWillUnmount():</span>**
-    - This method is called just before the component is removed from the DOM.
-    - It's used for cleaning up resources, canceling network requests, or unsubscribing from event listeners.
+  - **`componentWillUnmount()`**: This method is called just before the component is removed from the DOM. It's used for cleaning up resources, canceling network requests, or unsubscribing from event listeners.
