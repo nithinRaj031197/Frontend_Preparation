@@ -5,533 +5,124 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- <link rel="stylesheet" href="prctice.css" /> -->
     <style>
-      :root {
-        --primary_color: rgb(5, 55, 102);
-        --small_font: 12px;
-        --medium_font: 13px;
-        --large_font: 15px;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        background-color: aquamarine;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 10in;
-      }
-      .resume {
-        width: 8.5in;
-        height: 12in;
-        background-color: #fff;
-        display: grid;
-        grid-template-rows: 1fr 4fr;
-      }
-      header {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1.5fr;
-      }
-      .left__header {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        text-align: left;
-      }
-
-      .left__header > h1 {
-        color: var(--primary_color);
-        width: 100%;
-      }
-
-      .left__header > h4 {
-        font-weight: bold;
-        width: 100%;
-        color: var(--primary_color);
-      }
-
-      .left__header > p {
-        width: 100%;
-        text-align: justify;
-      }
-
-      .center_header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .center_header img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-      }
-
-      .right__header {
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .right__header ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .right__header ul li {
-        display: flex;
-        justify-content: end;
-        gap: 10px;
-      }
-
-      .group_icons {
-        display: flex;
-        width: 80%;
-        flex-direction: row;
-        justify-content: space-evenly;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      a i {
-        width: 20px;
-        height: 20px;
-      }
-
-      main {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .left_main {
-        display: grid;
-        grid-template-rows: 1fr 1.5fr 1fr;
-        padding: 20px;
-      }
-
-      .education {
-      }
-
-      .timeline {
-        position: relative;
-        max-width: 100%;
-        margin: 20px 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 3px;
-        background-color: var(--primary_color);
-        top: 0;
-        bottom: 0;
-        left: 5%;
-      }
-
-      .individual_timeline {
-        padding: 20px 30px;
-
-        position: relative;
-        border-radius: 6px;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      .individual_timeline::after {
-        content: "";
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        left: 12px;
-        background-color: #fff;
-        border: 4px solid var(--primary_color);
-        top: 30px;
-        border-radius: 50%;
-        z-index: 1;
-      }
-
-      .individual_timeline .title {
-        color: var(--primary_color);
-        font-weight: bold;
-      }
-      .individual_timeline .degree {
-        font-size: var(--medium_font);
-      }
-      .cgpa {
-        color: var(--primary_color);
-        font-weight: bold;
-      }
-
-      .skills {
-      }
-
-      .proficincies {
-        margin: 10px;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .proficincies .key {
-        margin-left: 5px;
-      }
-
-      .proficincies .value {
-        color: var(--primary_color);
-        font-weight: bold;
-      }
-
-      .skill_inline {
-        display: flex;
-      }
-
-      .projects {
-      }
-
-      .right_main {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        padding: 20px;
-      }
-
-      .work {
-      }
-
-      .jobs {
-        margin: 10px;
-        /* border: 2px solid black; */
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .individual_job {
-        display: flex;
-        gap: 5px;
-        flex-direction: column;
-        margin-bottom: 10px;
-      }
-
-      .individual_job_name {
-        color: var(--primary_color);
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-      }
-
-      .tech_stack {
-        font-size: var(--medium_font);
-      }
-
-      .line {
-        font-size: var(--medium_font);
-        display: flex;
-      }
-
-      .tech_names {
-        color: var(--primary_color);
-        font-weight: bold;
-      }
-
-      .interests_hobbies {
-      }
-
-      .interests_hobbies ul {
-        list-style: none;
-        margin: 10px;
-        display: flex;
-        gap: 20px;
-        flex-direction: column;
-      }
-
-      .interests_hobbies ul li {
-        display: flex;
-      }
-
-      .interests_hobbies ul li span {
-        margin-right: 10px;
-      }
-
-      .interest,
-      .hobbies {
-        margin-left: 10px;
-        color: var(--primary_color);
-        font-weight: bold;
-        font-size: var(--large_font);
-      }
-
-      .headlines {
-        color: var(--primary_color);
-      }
-
-      .bullet_arrow {
-        margin-right: 10px;
-      }
-
-      .bullet_arrow_list {
-        margin-left: 5px;
-        margin-right: 3px;
-      }
-
-      .underline {
-        height: 4px;
-        margin-top: 2px;
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-
-      .sub_underline_right {
-        position: absolute;
-        background-color: var(--primary_color);
-        width: 90%;
-        height: 2px;
-        right: 0;
-      }
-
-      .sub_underline_left {
-        width: 10%;
-        background-color: var(--primary_color);
-        height: 4px;
-        left: 0;
-        border-radius: 5px;
-      }
-
-      .icon {
-        color: var(--primary_color);
+      .add {
+        color: rgb(77, 161, 230);
       }
     </style>
   </head>
   <body>
-    <div class="resume">
-      <header>
-        <div class="left__header">
-          <h1>Nithin Raj</h1>
-          <h4>Software Engineer</h4>
-          <br />
-          <p>A hardworking and passionate individual aims to make a successful career in the same.</p>
-          <br />
-          <p>Always eager to learn new technologies.</p>
-        </div>
-        <div class="center_header">
-          <!-- <img src="./nithin_linkedIn_pic.jpeg" alt="Nithin Raj Image" /> -->
-          <img
-            src="https://media.licdn.com/dms/image/D5603AQG1o3pGYtFXmA/profile-displayphoto-shrink_200_200/0/1678624800209?e=1701302400&v=beta&t=TA0ueK6qBB4b4iHiQBF7ArjVoVz3p3oKaeo0mYtII0U"
-            alt="Nithin Raj Image"
-          />
-        </div>
-        <div class="right__header">
-          <ul>
-            <li>
-              <p>nithinraj.official3@gmail.com</p>
-              <i class="fa-solid fa-envelope icon"></i>
-            </li>
-            <li>
-              <p>Bangalore, Karnataka, India</p>
-              <i class="fa-solid fa-location-dot icon"></i>
-            </li>
-            <li>
-              <p>+91-9019274278</p>
-              <i class="fa-solid fa-phone icon"></i>
-            </li>
-          </ul>
-          <div class="group_icons">
-            <a target="_blank" href="https://www.linkedin.com/in/nithin-raj-831108214/"
-              ><i class="fa-brands fa-linkedin icon"></i
-            ></a>
-            <a target="_blank" href="https://github.com/nithinRaj031197"><i class="fa-brands fa-github icon"></i></a>
-            <a class="icon" target="_blank" href="https://leetcode.com/nithinraj03/"> Leetcode </a>
-          </div>
-        </div>
-      </header>
-      <main>
-        <div class="left_main">
-          <div class="education">
-            <h3 class="headlines"><span class="bullet_arrow">✦</span>ACADEMIC QUALIFICATION</h3>
+    <script>
+      // const arr = [1, 2, 3, 4, 5];
 
-            <div class="underline">
-              <div class="sub_underline_left"></div>
-              <div class="sub_underline_right"></div>
-            </div>
-            <div class="timeline">
-              <div class="individual_timeline">
-                <i class="title">Scalar Academy | May22 - Present</i>
-                <div class="degree">DSA, LLD, HLD, SQL, MERN stack</div>
-              </div>
-              <div class="individual_timeline">
-                <i class="title">SJB Institute of Technology | Aug15 - May19</i>
-                <div class="degree">
-                  <span>Mechanical Engineering (B.E)</span>
-                  <span class="cgpa">CGPA: 8.39</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="skills">
-            <h3 class="headlines"><span class="bullet_arrow">✦</span>SKILLS & PROFICIENCES</h3>
-            <div class="underline">
-              <div class="sub_underline_left"></div>
-              <div class="sub_underline_right"></div>
-            </div>
-            <ul class="proficincies">
-              <li class="skill_inline">
-                <span>➣</span>
-                <span class="key">Programming: <span class="value">JavaScript | Python</span></span>
-              </li>
-              <li class="skill_inline">
-                <span>➣</span>
-                <span class="key">Markup / Styling: <span class="value">HTML | CSS | SCSS</span></span>
-              </li>
-              <li class="skill_inline">
-                <span>➣</span>
-                <span class="key"
-                  >Frontend: <span class="value">React.js | Next.js | Bootstrap | MUI | Redux & RTK </span></span
-                >
-              </li>
-              <li class="skill_inline">
-                <span>➣</span>
-                <span class="key">Backend: <span class="value">Node.js | Express.js | Nest.js</span></span>
-              </li>
-              <li class="skill_inline">
-                <span>➣</span>
-                <span class="key">Databases: <span class="value">MySQL | MongoDB</span></span>
-              </li>
-              <li class="skill_inline">
-                <span>➣</span>
-                <span class="key"
-                  >Problem Solving: <span class="value">Data Structures and Algorithms | Low Level Design </span></span
-                >
-              </li>
-              <li class="skill_inline">
-                <span>➣</span>
-                <span class="key"
-                  >Misc: <span class="value">Typescript | Git | ChatGPT prompting | GrapghQL</span></span
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="interests_hobbies">
-            <h3 class="headlines"><span class="bullet_arrow">✦</span>INTERESTS and HOBBIES</h3>
-            <div class="underline">
-              <div class="sub_underline_left"></div>
-              <div class="sub_underline_right"></div>
-            </div>
-            <ul>
-              <li>
-                <span>➣</span>
-                Interests:
-                <span class="interest">Problem-solving | Software Architecture | Open Source Contribution</span>
-              </li>
-              <li>
-                <span>➣</span>
-                Hobbies:
-                <span class="hobbies">Music | Bike-Riding | Cooking</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="right_main">
-          <div class="work">
-            <h3 class="headlines"><span class="bullet_arrow">✦</span>WORK EXPERIENCE ( 1.7 years )</h3>
-            <div class="underline">
-              <div class="sub_underline_left"></div>
-              <div class="sub_underline_right"></div>
-            </div>
-            <ul class="jobs">
-              <li class="individual_job">
-                <i class="individual_job_name">Kenpath Technologies | Mar23 - July23</i>
-                <div class="line">
-                  <span class="bullet_arrow_list">●</span>
-                  <span>Designed and Integrated Chatbot UI for vision impared people.</span>
-                </div>
-                <div class="line">
-                  <span class="bullet_arrow_list">●</span>
-                  <span>Quiz App and Resume Generator for vision imapred people using Node.js and Vanila JS.</span>
-                </div>
-                <div class="tech_stack">
-                  <span class="bullet_arrow_list">●</span>
-                  <span>Tech Stack :<span class="tech_names"> React.js | Node.js | AWS | Docker | MySQL</span> </span>
-                </div>
-              </li>
+      // Array.prototype.myMap = function (callbackFn) {
+      //   const res = [];
 
-              <li class="individual_job">
-                <i class="individual_job_name">Eco-rework (Freelance) | Jan23</i>
-                <div class="line">
-                  <span class="bullet_arrow_list">●</span>
-                  <span
-                    >Worked on components like Vendor Registration Form, Pagination, Donut chart, Email Service for
-                    Assetz Application.</span
-                  >
-                </div>
+      //   for (let i = 0; i < this.length; i++) {
+      //     res.push(callbackFn(this[i], i, this));
+      //   }
 
-                <div class="tech_stack">
-                  <span class="bullet_arrow_list">●</span>
-                  <span>Tech Stack : <span class="tech_names">React.js | Express.js | AWS | MongoDB </span></span>
-                </div>
-              </li>
+      //   return res;
+      // };
 
-              <li class="individual_job">
-                <i class="individual_job_name">Exzatech Consulting and Services | Nov21 - Dec22</i>
-                <div class="line">
-                  <span class="bullet_arrow_list">●</span>
-                  <span
-                    >Worked on Caching, RBAC controllers, Data Migration and UAT deployments for Civil Registration
-                    System (Central Govt Project)</span
-                  >
-                </div>
-                <div class="line">
-                  <span class="bullet_arrow_list">●</span>
-                  <span
-                    >Designed, Integrated and Implemented components like Folder-File structure, Dashboard, Forms and
-                    Log Activities for different Roles. Also integrated OTP and Email service for Health Vault App.
-                  </span>
-                </div>
-                <div class="tech_stack">
-                  <span class="bullet_arrow_list">●</span>
-                  <span>Tech Stack : <span class="tech_names">React.js | Nest.js | Docker | OracleSQL </span></span>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="projects">
-            <h3 class="headlines"><span class="bullet_arrow">✦</span>Projects</h3>
-            <div class="underline">
-              <div class="sub_underline_left"></div>
-              <div class="sub_underline_right"></div>
-            </div>
-          </div>
+      // const newArr = arr.myMap((item, index, array) => {
+      //   return item * 2;
+      // });
 
-          <!-- <div></div> -->
-        </div>
-      </main>
-    </div>
+      // console.log(newArr);
+
+      // const arr = [1, 2, 3, 4, 5];
+
+      // if (!Array.prototype.myFilter) {
+      //   Array.prototype.myFilter = function (callbackFn) {
+      //     const res = [];
+
+      //     for (let i = 0; i < this.length; i++) {
+      //       if (callbackFn(this[i], i, this)) {
+      //         res.push(this[i]);
+      //       }
+      //     }
+
+      //     return res;
+      //   };
+      // }
+
+      // const filterArr = arr.myFilter((item, index, array) => {
+      //   return item !== 4;
+      // });
+
+      // console.log(filterArr);
+
+      // const arr = [1, 2, 3, 4, 5];
+
+      // if (!Array.prototype.myReduce) {
+      //   Array.prototype.myReduce = function (callbackFn, initialValue) {
+      //     let prev = initialValue === undefined ? this[0] : initialValue;
+      //     let startIndex = initialValue === undefined ? 1 : 0;
+
+      //     for (let i = startIndex; i < this.length; i++) {
+      //       prev = callbackFn(prev, this[i], i, this);
+      //     }
+      //     return prev;
+      //   };
+      // }
+
+      // const total = arr.myReduce((prevValue, currValue, currIndex, array) => {
+      //   return prevValue + currValue;
+      // });
+
+      // console.log(total);
+
+      // const arr = [1, [2, 3, [4, 5, [1], 6], 4], [9, 7, 0, [2, 3]]];
+
+      // // const newArr = arr.flat(1);
+
+      // Array.prototype.myFlat = function (depth = 1) {
+      //   let res = [];
+
+      //   function flatten(A, d) {
+      //     for (let i = 0; i < A.length; i++) {
+      //       if (Array.isArray(A[i]) && d < depth) {
+      //         flatten(A[i], d + 1);
+      //       } else {
+      //         res.push(A[i]);
+      //       }
+      //     }
+      //   }
+
+      //   flatten(this, 0);
+
+      //   return res;
+      // };
+      // const newArr = arr.myFlat(3);
+      // console.log(newArr);
+
+      function myTrottle(fn, delay) {
+        let isThrottle;
+        return function () {
+          if (!isThrottle) {
+            fn.apply(this, arguments);
+            isThrottle = true;
+            setTimeout(() => {
+              isThrottle = false;
+            }, delay);
+          }
+        };
+      }
+
+      function logMessage(v) {
+        console.log("Throttled", v);
+      }
+
+      const throttle = myTrottle((v) => logMessage(v), 500);
+
+      throttle(1);
+      setTimeout(() => {
+        throttle(2);
+      }, 200);
+      setTimeout(() => {
+        throttle(3);
+      }, 400);
+    </script>
   </body>
 </html>
