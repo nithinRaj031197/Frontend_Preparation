@@ -180,3 +180,54 @@
 ### 11. React Reconcilation:
 
 - React keeps the in-memory Virtual representation of actual DOM and keeps it in sync with batch update. This process is called Reconcilation.
+
+### 12. Error Boundry:
+
+- `Error Boundaries in React are components that catch JavaScript errors anywhere in their child component tree, log those errors, and display fallback UI instead of crashing the whole application`.
+- React introduced Error Boundaries as a way to handle errors more gracefully and to prevent a broken component from affecting the entire application.
+
+- Error Boundaries are typically implemented as class components using lifecycle methods. However, with the introduction of React Hooks, you can also create Error Boundaries using functional components.
+
+  ```jsx
+  // Error Boundry as HOC:
+
+  import React, { useState, useEffect } from "react";
+
+  const ErrorBoundary = ({ children }) => {
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+      // The componentDidCatch lifecycle method is replaced with useEffect in functional components
+      const handleError = (error, info) => {
+        console.error("Error Boundary caught an error:", error);
+        setError(error);
+      };
+
+      window.addEventListener("error", handleError);
+
+      return () => {
+        window.removeEventListener("error", handleError);
+      };
+    }, []);
+
+    if (error) {
+      return (
+        <div>
+          <h1>Something went wrong.</h1>
+          <p>{error.message}</p>
+        </div>
+      );
+    }
+
+    return children;
+  };
+
+  export default ErrorBoundary;
+  ```
+
+  ```jsx
+  // To use this Error Boundary in your application, wrap the components you want to protect with it:
+  <ErrorBoundary>
+    <YourComponent />
+  </ErrorBoundary>
+  ```

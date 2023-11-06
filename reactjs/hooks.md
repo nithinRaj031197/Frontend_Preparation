@@ -231,7 +231,7 @@
 
       ```
 
-8.  ### useMemeo():
+8.  ### useMemo():
 
     - `useMemo` is a React hook used for memoizing the result of a computation.
 
@@ -251,6 +251,8 @@
 
     - `Allows you to update the state without blocking the UI`.
 
+    - useTransition() can be `used to tell React that certain state updates have a lower priority` (i.e., all other state updates or UI rendering triggers have a higher priority).
+
       ```jsx
       const [isPending, startTransition] = useTransition();
       ```
@@ -266,9 +268,34 @@
       The `startTransition` function that lets you mark a state update as a transition.
       ```
 
+      ```jsx
+      function App() {
+        const [isPending, startTransition] = useTransition();
+        const [filterTerm, setFilterTerm] = useState("");
+
+        const filteredProducts = filterProducts(filterTerm);
+
+        function updateFilterHandler(event) {
+          startTransition(() => {
+            setFilterTerm(event.target.value);
+          });
+        }
+
+        return (
+          <div id="app">
+            <input type="text" onChange={updateFilterHandler} />
+            {isPending && <p>Updating List...</p>}
+            <ProductList products={filteredProducts} />
+          </div>
+        );
+      }
+      ```
+
 10. ### useDeferredValue():
 
     - Is a React Hook that lets you `defer` updating a part of the UI.
+
+    - The difference is that `useTransition() wraps the state updating code`, while `useDeferredValue() wraps a value` that's affected by the state update.
 
     - Use Case:
     - i. Showing stale content while fresh content is loading.
@@ -300,6 +327,8 @@
 - Side effects refer to code executed outside the normal flow of the components rendering process.
 
 - It can include tasks such as data fetching, interacting with DOM or subscribing external data sources.
+
+- Back to [useEffect](#2-useeffect)
 
 ## Why React hooks better than class components?
 
