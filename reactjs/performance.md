@@ -1,6 +1,50 @@
 ### Table of Contents:
 
-[Key Difference between useEffect and useLayoutEffect](#key-difference-between-useeffect-and-uselayouteffect)
+- [Key Difference between useEffect and useLayoutEffect](#key-difference-between-useeffect-and-uselayouteffect)
+
+- [Performance Techniques](#performance-techniques)
+
+## Performance techniques:
+
+1. `Code Splitting`:
+
+   - Technique to **Split the code into chunks and load them on demand** to reduce the initial bundle size.
+
+   - React's **React.lazy** and **dynamic imports** can be helpful.
+
+2. `Lazy Loading`:
+
+   - Lazy loading is a technique that **defers the loading of certain resources** (e.g., images, scripts, or components) until they are needed, to reduce initial load time.
+
+   - Lazy loading is often triggered by user interactions, such as scrolling down a page or clicking on an element.
+
+3. `useCallback() and useMemo():`
+
+   - **useCallback() is for memoizing functions**, while **useMemo() is for memoizing values or computations**.
+   - Both help optimize performance by reducing unnecessary re-computation or re-renders in React components.
+
+4. `Keyed Lists`:
+
+   - Always provide a unique key prop for elements in a list to help React efficiently update the DOM.
+
+5. `Windowing and Pagination`:
+
+   - To render required dta from large list or data grid, windowing or pagination can be implemented.
+
+6. `PureComponents and React.memo()`:
+
+   - Ensure that you avoid unnecessary component re-renders until props and state is changed
+
+7. `Server-Side Rendering (SSR)`:
+
+   - To pre-render your application on the server, which can improve initial load times.
+
+8. `Minification and Tree Shaking`:
+
+   - Optimize the bundle size by enabling tree shaking in your build process to eliminate unused code.
+
+9. `Optimize Redux`:
+   - Use libraries like Redux Toolkit, which provides performance optimizations for Redux applications.
 
 ## Key Difference between useEffect and useLayoutEffect
 

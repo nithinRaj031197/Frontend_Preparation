@@ -1,8 +1,16 @@
 ## What are ReactHooks:
 
-- React Hooks are functions, that allows you to hook into `React state and lifecycle features` from functional components.
+- React Hooks are functions, that allows you to hook into `React state and lifecycle features` to functional components.
 
 - They were introduced in `React 16.8` to provide a more elegant way of working with state and side effects in functional components.
+
+### What are the rules that must be followed while using React Hooks?
+
+- React Hooks must be called only at the top level.
+
+- It is not allowed to call them inside the nested functions, loops, or conditions
+
+- It is allowed to call the Hooks only from the React Function Components.
 
 ## List all React Hooks:
 
@@ -208,26 +216,84 @@
      );
      ```
 
-7. ### useTransition():
+7.  ### useCallback():
 
-- `Allows you to update the state without blocking the UI`.
+    - `useCallback` is a React hook that is used to memoize functions.
 
-  ```jsx
-  const [isPending, startTransition] = useTransition();
-  ```
+    - It's particularly useful when you want to `prevent unnecessary re-renders of child components that rely on function props`.
 
-  ```md
-  **Parameters**
-  useTransition does not take any parameters.
+    - It takes two arguments: the function you want to memoize and an array of dependencies.
 
-  **Returns**
-  useTransition returns an array with exactly two items:
+      ```jsx
+        const memoizedCallback = useCallback(() => {
+        // Your function logic
+      }, [dependency1, dependency2, ...]);
 
-  The `isPending` flag that tells you whether there is a pending transition.
-  The `startTransition` function that lets you mark a state update as a transition.
-  ```
+      ```
 
--
+8.  ### useMemeo():
+
+    - `useMemo` is a React hook used for memoizing the result of a computation.
+
+    - It takes two arguments: a function that computes a value and an array of dependencies.
+
+    - The computed value is memoized, and it is recalculated only when one of the dependencies in the array changes.
+
+      ```jsx
+      const memoizedValue = useMemo(() => {
+        // Your computation logic
+        return computedValue;
+      }, [dependency1, dependency2, ...]);
+
+      ```
+
+9.  ### useTransition():
+
+    - `Allows you to update the state without blocking the UI`.
+
+      ```jsx
+      const [isPending, startTransition] = useTransition();
+      ```
+
+      ```md
+      **Parameters**
+      useTransition does not take any parameters.
+
+      **Returns**
+      useTransition returns an array with exactly two items:
+
+      The `isPending` flag that tells you whether there is a pending transition.
+      The `startTransition` function that lets you mark a state update as a transition.
+      ```
+
+10. ### useDeferredValue():
+
+    - Is a React Hook that lets you `defer` updating a part of the UI.
+
+    - Use Case:
+    - i. Showing stale content while fresh content is loading.
+    - ii. Deferring re-rendering for a part of the UI.
+
+      ```jsx
+      import { Suspense, useState, useDeferredValue } from "react";
+      import SearchResults from "./SearchResults.js";
+
+      export default function App() {
+        const [query, setQuery] = useState("");
+        const deferredQuery = useDeferredValue(query);
+        return (
+          <>
+            <label>
+              Search albums:
+              <input value={query} onChange={(e) => setQuery(e.target.value)} />
+            </label>
+            <Suspense fallback={<h2>Loading...</h2>}>
+              <SearchResults query={deferredQuery} />
+            </Suspense>
+          </>
+        );
+      }
+      ```
 
 ### Side Effect
 
